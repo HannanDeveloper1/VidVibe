@@ -1,0 +1,23 @@
+{
+  "name": "vidvibe-api",
+  "version": "1.0.0",
+  "description": "The backend server of VidVibe Shorts Platform",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "VidVibe"
+  },
+  "keywords": [
+    "VidVibe",
+    "Shorts-Platform",
+    "TikTok-clone",
+    "AI-Era",
+    "Modern"
+  ],
+  "author": "HannanDeveloper",
+  "license": "MIT"
+}
