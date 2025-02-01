@@ -7,7 +7,6 @@ const Error = (err, req, res, next) => {
     err.statusCode = err.statusCode || 500;
 
 
-    console.error(err.message);
     logger.error(`${err.status || 500} - ${err.message || "Internal Server Error"} - ${req.originalUrl} - ${req.method} - ${req.ip}`);
 
     if (err.name === 'CastError') {

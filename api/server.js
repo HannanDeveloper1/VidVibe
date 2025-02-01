@@ -5,7 +5,8 @@ import app from './src/app.js'
 import connectDB from "./src/lib/db/connectDB.js";
 import logger from './src/lib/error/winston.js'
 
-const PORT = process.env.PORT || 5001
+const PORT = process.env.PORT || 3001
+
 
 const server = app.listen(PORT, () => {
     console.log(`VidVibe API server is listening on port ${PORT}`);
