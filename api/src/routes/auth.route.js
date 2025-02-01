@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import {signUp} from "../controllers/auth.controller.js";
+import {signUp, usernameAvailable} from "../controllers/auth.controller.js";
 import {body} from "express-validator";
 import validator from "../middlewares/validator.middleware.js";
 
@@ -17,8 +17,10 @@ router.post('/signup', [
         minNumbers: 1,
         minSymbols: 1,
     }).withMessage("Please enter a strong password").notEmpty().withMessage("Please enter the Password"),
-    body('status.isOnline').isBoolean().withMessage("Value must be either True or False"),
+    body('status.isOnline').isBoolean().withMessage("Value must be either True or False").optional(),
     body('status.thought').optional(),
 ], validator, signUp);
+
+router.get('/available/:username', usernameAvailable)
 
 export default router;
