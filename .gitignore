@@ -44,3 +44,6 @@ app-example
 # editor-specific
 .idea/
 .vs-code/
+
+# Logs
+logs/*
