@@ -13,7 +13,7 @@ const server = app.listen(PORT, () => {
 })
 
 const gracefulShutdown = () => {
-    console.log('Shutting down gracefully...');
+    console.log('Shutting down the server');
     server.close(() => {
         console.log('Closed out remaining connections.');
         process.exit(0);
