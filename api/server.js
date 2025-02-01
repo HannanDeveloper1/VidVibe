@@ -1,9 +1,9 @@
 import dotenv from 'dotenv'
-dotenv.config()
-
 import app from './src/app.js'
 import connectDB from "./src/lib/db/connectDB.js";
 import logger from './src/lib/error/winston.js'
+
+dotenv.config()
 
 const PORT = process.env.PORT || 3001
 
@@ -23,7 +23,8 @@ const gracefulShutdown = () => {
     setTimeout(() => {
         console.error('Could not close connections in time, forcefully shutting down.');
         process.exit(1);
-    }, 10000)}
+    }, 10000)
+}
 
 
 process.on('SIGTERM', gracefulShutdown);

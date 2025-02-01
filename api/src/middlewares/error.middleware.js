@@ -12,18 +12,13 @@ const Error = (err, req, res, next) => {
     if (err.name === 'CastError') {
         const message = `Resource not found`;
         next(new ErrorHandler(message, 404));
-    }
-
-    else if (err.code === 11000) {
+    } else if (err.code === 11000) {
         const message = 'Duplicate field value entered';
         next(new ErrorHandler(message, 400));
-    }
-
-    else if (err.name === 'ValidationError') {
+    } else if (err.name === 'ValidationError') {
         const message = Object.values(err.errors).map(val => val.message);
         next(new ErrorHandler(message, 400));
-    }
-    else {
+    } else {
         res.status(err.statusCode).json({
             success: false,
             message: err.message,

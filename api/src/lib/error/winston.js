@@ -1,6 +1,6 @@
-import { createLogger, format, transports } from 'winston';
+import {createLogger, format, transports} from 'winston';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import {fileURLToPath} from 'url';
 import fs from 'fs';
 
 // Get the directory name of the current module
@@ -12,14 +12,14 @@ const logsFolder = path.join(__dirname, '../../../logs');
 
 // Create the folder if it doesn't exist
 if (!fs.existsSync(logsFolder)) {
-    fs.mkdirSync(logsFolder, { recursive: true });
+    fs.mkdirSync(logsFolder, {recursive: true});
 }
 
 const logger = createLogger({
     level: 'error',
     format: format.json(),
     transports: [
-        new transports.File({ filename: path.join(logsFolder, 'error.log') })
+        new transports.File({filename: path.join(logsFolder, 'error.log')})
     ]
 });
 
