@@ -28,5 +28,4 @@ router.post('/login', [
     body('password').notEmpty().withMessage("Please enter the Password"),
 ], validator, login);
 
-
 export default router;
