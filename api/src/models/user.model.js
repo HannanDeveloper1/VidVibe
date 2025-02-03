@@ -29,10 +29,6 @@ const userSchema = new Schema({
           type: Boolean,
           default: false,
         },
-        phoneVerified: {
-            type: Boolean,
-            default: false,
-        }
     },
     status: {
         isOnline: {
