@@ -1,7 +1,6 @@
 import logger from "../lib/error/winston.js";
 
 const errorMiddleware = (err, req, res, next) => {
-    // Set default message and status code
     err.message = err.message || "Internal Server Error";
     err.statusCode = err.statusCode || 500;
 

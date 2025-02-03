@@ -1,6 +1,6 @@
 import {Router} from 'express'
-import {login, signUp, usernameAvailable} from "../controllers/auth.controller.js";
-import {body} from "express-validator";
+import {login, sendEmailVerification, signUp, usernameAvailable, verifyEmail} from "../controllers/auth.controller.js";
+import {body, param} from "express-validator";
 import validator from "../middlewares/validator.middleware.js";
 
 const router = Router();
@@ -27,5 +27,14 @@ router.post('/login', [
     body('email').isEmail().withMessage("Please enter a valid email").notEmpty().withMessage("Please enter the Email"),
     body('password').notEmpty().withMessage("Please enter the Password"),
 ], validator, login);
+
+router.get('/verify/:email', [
+    param('email').isEmail().withMessage("Please enter a valid email").notEmpty().withMessage("Please enter the Email")
+], validator, sendEmailVerification);
+
+router.put('/verify/email/:token', [
+    param('token').notEmpty().withMessage("Please enter the Token")
+], validator, verifyEmail)
+
 
 export default router;

@@ -23,6 +23,17 @@ const userSchema = new Schema({
         required: true,
         minLength: 8,
     },
+    phone: String,
+    isVerified: {
+        emailVerified: {
+          type: Boolean,
+          default: false,
+        },
+        phoneVerified: {
+            type: Boolean,
+            default: false,
+        }
+    },
     status: {
         isOnline: {
             type: Boolean,
@@ -46,10 +57,8 @@ userSchema.methods.comparePassword = async function (inputPassword) {
     return await bcrypt.compare(inputPassword, this.password);
 };
 
-userSchema.methods.generateToken = function () {
-    return jwt.sign({_id: this._id}, process.env.JWT_SECRET, {
-        expiresIn: "30d"
-    });
+userSchema.methods.generateToken = function (expiresIn) {
+    return jwt.sign({_id: this._id}, process.env.JWT_SECRET, { expiresIn });
 };
 
 const userModel = mongoose.model('User', userSchema);
