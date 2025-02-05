@@ -18,6 +18,10 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
+    verifyToken: {
+        token: String,
+        expiresIn: Date
+    },
     password: {
         type: String,
         required: true,
@@ -54,7 +58,7 @@ userSchema.methods.comparePassword = async function (inputPassword) {
 };
 
 userSchema.methods.generateToken = function (expiresIn) {
-    return jwt.sign({_id: this._id}, process.env.JWT_SECRET, { expiresIn });
+    return 'bearer ' + jwt.sign({_id: this._id}, process.env.JWT_SECRET, { expiresIn });
 };
 
 const userModel = mongoose.model('User', userSchema);

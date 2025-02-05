@@ -14,7 +14,6 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(morgan('combined', {stream: {write: message => logger.info(message.trim())}}));
 
-app.set('trust proxy', true)
 app.use(requestIp.mw());
 
 app.use('/api/auth', authRoute)
