@@ -9,7 +9,7 @@ const authenticateMiddleware = async (req, res, next) => {
     }
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        const user = await UserModel.findById(decoded._id).select('-password');
+        const user = await UserModel.findById(decoded._id).select(['-password', '-verifyToken.token', '-verifyToken.expiresIn']);
 
         if (!user) {
             return next(new ErrorHandler("Invalid or expired token", 401));
