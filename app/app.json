@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "VidVibe",
+    "scheme": "vidvibe",
+    "slug": "vidvibe",
+    "version": "1.0.0",
+    "orientation": "default",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ec3554"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "package": "com.hannandev.vidvibe"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#ec3554"
+      },
+      "package": "com.hannandev.vidvibe"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font"
+    ]
+  }
+}
