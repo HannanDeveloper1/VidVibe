@@ -13,7 +13,6 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    headline: String,
     email: {
         type: String,
         required: true,
@@ -27,12 +26,23 @@ const userSchema = new Schema({
         required: true,
         minLength: 8,
     },
+    oAuth:{
+      type: Boolean,
+      default: false
+    },
     phone: String,
     isVerified: {
         emailVerified: {
           type: Boolean,
           default: false,
         },
+        twoFA: {
+            type: Boolean,
+            default: false,
+        },
+    },
+    bio: {
+      type: String
     },
     status: {
         isOnline: {

@@ -192,11 +192,11 @@ export const passwordChangedMail = (username, details) => {
                   <li><strong>Operating System:</strong> ${details.os}</li>
                   <li><strong>IP Address:</strong> ${details.ip}</li>
                 </ul>
-                <p>If you didn't change your password, please contact support immediately at <a href="mailto:[Support Email]" style="color: #ec3454;">[Support Email]</a></p>
+                <p>If you didn't change your password, please contact support immediately at <a href="mailto:${process.env.SUPPORT_EMAIL}" style="color: #ec3454;">[Support Email]</a></p>
                 <p>Stay secure:</p>
                 <ul>
                   <li>Use unique, strong passwords.</li>
-                  <li>Never share your password or verification code</li>
+                  <li>Enable two-factor authentication.</li>
                   <li>Regularly check your account for unusual activity.</li>
                 </ul>
               </div>
@@ -207,6 +207,36 @@ export const passwordChangedMail = (username, details) => {
                 <p><a href="${process.env.FACEBOOK_PROFILE}" style="color: #ec3454;">[Facebook]</a> <a href="${process.env.INSTAGRAM_PROFILE}" style="color: #ec3454;">[Instagram]</a></p>
               </div>
               </div>
+            </body>
+            </html>`
+}
+
+export const profileUpdated = (username) => {
+    return `<!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Profile Updated</title>
+            </head>
+            <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
+            <div style="max-width: 600px; margin: 20px auto; background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                <div style="text-align: center; margin-bottom: 20px; background: #ec3454; padding: 1rem; border-radius: 10px;">
+                    <img src="https://ik.imagekit.io/onmwvwg7jy/VidVibe/images/VidVibe-splash-icon.PNG?updatedAt=1738481603417" alt="VidVibe Logo" style="max-width: 100px;">
+                </div>
+                <div style="text-align: left;">
+                    <h1 style="color: #ec3454;">Profile Updated</h1>
+                    <p>Hello @${username},</p>
+                    <p>Your profile has been successfully updated.</p>
+                    <p>If you did not request this update, please contact support immediately at <a href="mailto:${process.env.SUPPORT_EMAIL}" style="color: #ec3454;">[Support Email]</a></p>
+                </div>
+                <p>If you have any questions or need assistance, feel free to reach out to us at ${process.env.SUPPORT_EMAIL}.</p>
+                <div style="text-align: center; margin-top: 20px; font-size: 12px; color: #999;">
+                    <p>Best regards,<br>VidVibe Team</p>
+                    <p>Follow us on social media:</p>
+                    <p><a href="${process.env.FACEBOOK_PROFILE}" style="color: #ec3454;">[Facebook]</a> <a href="${process.env.INSTAGRAM_PROFILE}" style="color: #ec3454;">[Instagram]</a></p>
+                </div>
+            </div>
             </body>
             </html>`
 }
