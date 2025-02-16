@@ -23,6 +23,7 @@ router.get('/available/:username', [
 router.post('/signup', [
     body("profilePicture").isURL().withMessage("Profile picture must be provided in URL form").optional(),
     body('name').notEmpty().withMessage("Please enter the Name").isLength({ min: 3 }).withMessage("Name must be at least 3 characters"),
+    body('username').notEmpty().withMessage("Please enter the Username"),
     body('headline').optional(),
     body('email').isEmail().withMessage("Please enter a valid email").notEmpty().withMessage("Please enter the Email"),
     body('password').isStrongPassword({
@@ -32,8 +33,6 @@ router.post('/signup', [
         minNumbers: 1,
         minSymbols: 1,
     }).withMessage("Please enter a strong password").notEmpty().withMessage("Please enter the Password"),
-    body('status.isOnline').isBoolean().withMessage("Value must be either True or False").optional(),
-    body('status.thought').optional(),
 ], validator, authRateLimiter, signUp);
 
 router.post('/login', [
@@ -43,7 +42,7 @@ router.post('/login', [
 
 router.get('/verify/:email', [
     param('email').isEmail().withMessage("Please enter a valid email").notEmpty().withMessage("Please enter the Email")
-], validator, sendEmailVerification);
+], authRateLimiter, validator, sendEmailVerification);
 
 router.put('/verify/email/:token', [
     param('token').notEmpty().withMessage("Invalid or Expired link")

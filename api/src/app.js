@@ -5,7 +5,8 @@ import requestIp from 'request-ip';
 
 import errorMiddleware from "./middlewares/error.middleware.js";
 import logger from './lib/error/winston.js'
-import authRoute from "./routes/auth.route.js";
+import authRoute from "./routes/auth.routes.js";
+import profileRoutes from "./routes/profile.routes.js";
 
 const app = express()
 
@@ -17,6 +18,7 @@ app.use(morgan('combined', {stream: {write: message => logger.info(message.trim(
 app.use(requestIp.mw());
 
 app.use('/api/auth', authRoute)
+app.use('/api/profile', profileRoutes)
 
 export default app;
 

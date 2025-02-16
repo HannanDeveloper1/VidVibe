@@ -144,6 +144,53 @@ npm run dev
       "password": "new_password"
    }
   ```  
+### Profile Management
+
+- #### Get Profile
+
+   - **Endpoint:** ``/api/profile``
+   - **Method**: ``GET``
+   - **Description:** Get the user's profile information.
+   - **Headers:**
+    ```http request
+    "authorization": "authToken"
+  ```
+- #### Change Password
+
+  - **Endpoint:** ``/api/profile/change/password``
+  - **Method**: ``PUT``
+  - **Description:** Change the password.
+  - **Headers:**
+   ```http request
+   "authorization": "authToken"
+  ```
+  - **Request Body:**
+   ```json
+   {
+     "oldPassword": "Your Old Password <OPTIONAL when login with oAuth>",
+     "newPassword": "New Password"
+  }
+  ```
+  - #### Update Profile
+
+    - **Endpoint:** ``/api/profile/update``
+    - **Method**: ``PUT``
+    - **Description:** Update the profile information
+    - **Headers:**
+     ```http request
+     "authorization": "authToken"
+    ```
+    - **Request Body:**
+     ```json
+     {
+       "profilePicture": "url of your changed Profile Picture",
+       "username": "Your changed username",
+       "name": "Your changed name",
+       "bio": "Your changed bio"
+    }
+    ```
+    _Only add the fields which you want to update_
+
 
 ## Middlewares
 
