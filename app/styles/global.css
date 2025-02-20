@@ -15,4 +15,7 @@
     .link{
         @apply text-primary underline underline-offset-4 font-roboto-medium;
     }
+    .paragraph{
+        @apply leading-tight font-roboto-regular text-base text-black-200;
+    }
 }

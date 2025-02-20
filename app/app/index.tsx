@@ -8,7 +8,7 @@ import images from '../constants/images';
 import { StatusBar } from 'expo-status-bar';
 import { router } from 'expo-router';
 
-export default function Index() {
+export default function Home() {
     const translateYAnimation = useRef(new Animated.Value(300)).current;
     const translateXLeftAnimation = useRef(new Animated.Value(-300)).current;
     const translateXRightAnimation = useRef(new Animated.Value(300)).current;

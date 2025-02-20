@@ -24,6 +24,7 @@ import google from '../assets/icons/google.png'
 import upload from '../assets/icons/upload.png'
 import eye from '../assets/icons/eye.png'
 import eyeHide from '../assets/icons/eye-hide.png'
+import error from '../assets/icons/error.png'
 
 export default {
     home,
@@ -31,6 +32,7 @@ export default {
     accountAdd,
     arrowBack,
     bell,
+    error,
     bookmark,
     eye,
     eyeHide,

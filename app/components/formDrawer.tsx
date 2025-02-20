@@ -30,8 +30,8 @@ export default function FormDrawer({ children }: { children: ReactNode }): JSX.E
     ).current;
 
     return (
-        <Animated.View style={{ height: height, maxHeight, backgroundColor: '#f2f2f2', width: '100%', borderTopLeftRadius: 20, borderTopRightRadius: 20 }}>
-            <View className='w-full h-8 flex-row mb-1.5' {...panResponder.panHandlers}>
+        <Animated.View style={{ height: height, maxHeight, backgroundColor: '#f2f2f2', width: '100%', maxWidth: 600, borderTopLeftRadius: 20, borderTopRightRadius: 20, zIndex: 1 }}>
+            <View className='w-full h-10 flex-row' {...panResponder.panHandlers}>
                 <TouchableOpacity className={'flex-1 items-center justify-center'}>
                     <View className='w-24 h-1 bg-black-200 rounded-full' />
                 </TouchableOpacity>

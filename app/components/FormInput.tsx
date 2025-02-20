@@ -2,7 +2,7 @@ import {View, Text, TextInput, TouchableOpacity, Image, KeyboardTypeOptions} fro
 import React, { useState } from 'react';
 import icons from '../constants/icons';
 
-const FormInput = ({ keyboardType, value, placeholder, handleChangeText, label, numOfLines=1 }: { keyboardType: KeyboardTypeOptions, value:string, placeholder?: string, label:string, handleChangeText: (e:any)=>void, numOfLines?: number}) => {
+const FormInput = ({ keyboardType, value, placeholder, isPassword=false, handleChangeText, label, numOfLines=1 }: { keyboardType: KeyboardTypeOptions, value:string, placeholder?: string, label:string, isPassword?: boolean, handleChangeText: (e:any)=>void, numOfLines?: number}) => {
     const [showPassword, setShowPassword] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
 
@@ -18,11 +18,11 @@ const FormInput = ({ keyboardType, value, placeholder, handleChangeText, label, 
                     numberOfLines={numOfLines}
                     placeholderTextColor="#222"
                     onChangeText={handleChangeText}
-                    secureTextEntry={keyboardType === 'visible-password' && !showPassword}
+                    secureTextEntry={isPassword && !showPassword}
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
                 />
-                {keyboardType === 'visible-password' && (
+                {isPassword && (
                     <TouchableOpacity onPress={() => setShowPassword(!showPassword)} activeOpacity={0.6}>
                         <Image source={!showPassword ? icons.eye : icons.eyeHide} className="size-6" resizeMode="contain" tintColor={'#222'} />
                     </TouchableOpacity>
