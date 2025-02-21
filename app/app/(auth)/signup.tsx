@@ -55,7 +55,7 @@ export default function Signup() {
                     label='Sign Up'
                     loadingText='Signing Up'
                     isLoading={error !== ""}
-                    onPress={() => setError('The Server is not running or incorrect API')}
+                    onPress={() => setError('The Server is not running or invalid API call!')}
                 />
                 <Text className='text-center my-4'>OR</Text>
                 <View className='flex flex-row justify-center items-center'>

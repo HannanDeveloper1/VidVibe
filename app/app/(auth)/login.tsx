@@ -19,7 +19,7 @@ export default function Login() {
             <Text className={'heading-1 text-primary'}>Log In</Text>
             <FormInput keyboardType={'email-address'} value={formData.email} handleChangeText={(e)=>setFormData({...formData, email: e})} label={'Enter your Email'} />
             <FormInput keyboardType={'default'} isPassword={true} value={formData.password} handleChangeText={(e)=>setFormData({...formData, password: e})} label={'Enter your Password'} />
-            <BtnPrimary label={'Log In'} loadingText={'Logging In'} onPress={() => setError('The Server is not running or incorrect API')} isLoading={error !== ""}/>
+            <BtnPrimary label={'Log In'} loadingText={'Logging In'} onPress={() => setError('The Server is not running or invalid API call!')} isLoading={error !== ""}/>
             <Text className="text-center my-4">OR</Text>
             <View className='flex flex-row justify-center items-center'>
                 <Text className='mr-1'>Don't have an account?</Text>
