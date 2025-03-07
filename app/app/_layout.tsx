@@ -4,9 +4,8 @@ import "../styles/global.css";
 
 import {SplashScreen, Stack} from "expo-router";
 import {useFonts} from "expo-font";
-import {StatusBar} from "expo-status-bar";
 
-export default function Layout() {
+export default function rootLayout() {
 
   const [fontsLoaded, error] = useFonts({
     "Roboto-Black": require("../assets/fonts/Roboto-Black.ttf"),

@@ -27,7 +27,7 @@ export const usernameAvailable = catchAsyncErrors(async (req, res, next) => {
 export const signUp = catchAsyncErrors(async (req, res, next) => {
     const emailExists = await UserModel.findOne({ email: req.body.email });
     if (emailExists) {
-        return next(new ErrorHandler("An email is only used for one account", 400));
+        return next(new ErrorHandler("Email is already in use!", 400));
     }
     const user = await UserModel.create(req.body);
     const authToken = await user.generateToken("30d");
