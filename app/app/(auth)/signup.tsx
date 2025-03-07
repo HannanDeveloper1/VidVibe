@@ -1,4 +1,4 @@
-import { Alert, Image, ScrollView, Text, View } from 'react-native';
+import { Image, ScrollView, Text, View } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import FormInput from '../../components/FormInput';
@@ -36,7 +36,7 @@ export default function Signup() {
                         password: formData.password,
                     })
                 })
-                const result = await response.json();
+                const result:responseType = await response.json();
 
                 if(!result.success) {
                     setError(result.message);

@@ -3,7 +3,8 @@ import React, {useState} from 'react'
 import {SafeAreaView} from "react-native-safe-area-context";
 import FormInput from "../../components/FormInput";
 import BtnPrimary from "../../components/BtnPrimary";
-import {Link} from "expo-router";
+import {Link, router} from "expo-router";
+import { VIDVIBE_API_ORIGIN } from '@env'
 import ErrorAlert from "../../components/ErrorAlert";
 
 export default function Login() {
@@ -11,7 +12,47 @@ export default function Login() {
         email: "",
         password: "",
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState('');
+    const handleLogin = async () => {
+        try {
+            setIsSubmitting(true);
+            if (!formData.email || !formData.password) {
+                setError('Please fill all the required fields.');
+            } else {
+                const response = await fetch(`${VIDVIBE_API_ORIGIN}/api/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: formData.email,
+                        password: formData.password,
+                    })
+                })
+                const result:responseType = await response.json();
+
+                if(!result.success) {
+                    setError(result.message);
+                } else {
+                    setFormData({
+                        email: "",
+                        password: "",
+                    })
+                    router.replace('/')
+                }
+            }
+        }
+        catch
+            (error)
+        {
+            setError(error.message);
+        }
+        finally
+        {
+            setIsSubmitting(false);
+        }
+    }
     return (
         <SafeAreaView className={'flex-1'}>
             <ScrollView contentContainerClassName={'px-8 py-5 min-h-full justify-center'}>
@@ -19,7 +60,8 @@ export default function Login() {
             <Text className={'heading-1 text-primary'}>Log In</Text>
             <FormInput keyboardType={'email-address'} value={formData.email} handleChangeText={(e)=>setFormData({...formData, email: e})} label={'Enter your Email'} />
             <FormInput keyboardType={'default'} isPassword={true} value={formData.password} handleChangeText={(e)=>setFormData({...formData, password: e})} label={'Enter your Password'} />
-            <BtnPrimary label={'Log In'} loadingText={'Logging In'} onPress={() => setError('The Server is not running or invalid API call!')} isLoading={error !== ""}/>
+            <BtnPrimary label={'Log In'} loadingText={'Logging In'} isLoading={isSubmitting}
+                        onPress={handleLogin}/>
             <Text className="text-center my-4">OR</Text>
             <View className='flex flex-row justify-center items-center'>
                 <Text className='mr-1'>Don't have an account?</Text>
