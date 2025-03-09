@@ -214,4 +214,4 @@ npm run dev
 
 ## Contact
 
-For any questions or suggestions, please contact us at hannandeveloper@outlook.com.
+For any questions or suggestions, please contact us at [hannandeveloper@outlook.com](malto:hannandeveloper@outlook.com).
