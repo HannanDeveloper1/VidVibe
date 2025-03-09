@@ -27,7 +27,7 @@ export const usernameAvailable = catchAsyncErrors(async (req, res, next) => {
 export const signUp = catchAsyncErrors(async (req, res, next) => {
     const emailExists = await UserModel.findOne({ email: req.body.email });
     if (emailExists) {
-        return next(new ErrorHandler("An email is only used for one account", 400));
+        return next(new ErrorHandler("Email is already in use!", 400));
     }
     const user = await UserModel.create(req.body);
     const authToken = await user.generateToken("30d");
@@ -41,7 +41,7 @@ export const signUp = catchAsyncErrors(async (req, res, next) => {
         to: user.email,
         subject: "Welcome to VidVibe!",
         text: `Welcome to VidVibe, ${user.name}!`,
-        html: welcomeMail(user.username, verifyToken),
+        html: welcomeMail(user.fName, verifyToken),
     }, 3000);
 });
 
@@ -69,7 +69,7 @@ export const login = catchAsyncErrors(async (req, res, next) => {
         subject: `New Login from ${os}`,
         priority: 'high',
         text: `We noticed a new login to VidVibe!`,
-        html: loginMail(user.username, {
+        html: loginMail(user.fName, {
             dateTime,
             os,
             ip
@@ -90,7 +90,7 @@ export const sendEmailVerification = catchAsyncErrors(async (req, res, next) => 
         subject: `Verify your email with ${email}`,
         priority: 'high',
         text: `Verify your email with ${email}`,
-        html: verifyEmailMail(user.username, verifyToken),
+        html: verifyEmailMail(user.fName, verifyToken),
     }, 500);
     return res.status(200).json({
         success: true,
@@ -121,7 +121,7 @@ export const verifyEmail = catchAsyncErrors(async (req, res, next) => {
         subject: `Email Verified Successfully`,
         priority: 'high',
         text: `Your email has been verified successfully!`,
-        html: emailVerifiedMail(user.username),
+        html: emailVerifiedMail(user.fName),
     }, 1200);
 });
 
@@ -138,7 +138,7 @@ export const forgetPassword = catchAsyncErrors(async (req, res, next) => {
         subject: `Reset Your Password for VidVibe`,
         priority: 'high',
         text: `Reset Your Password for VidVibe`,
-        html: forgetPasswordMail(user.username, forgetPasswordToken),
+        html: forgetPasswordMail(user.fName, forgetPasswordToken),
     }, 500);
     user.verifyToken.token = forgetPasswordToken;
     user.verifyToken.expiresIn = Date.now() + 30 * 60 * 1000; // 30 minutes from now
@@ -180,7 +180,7 @@ export const resetPassword = catchAsyncErrors(async (req, res, next) => {
         subject: `Your Password Has Been Successfully Changed`,
         priority: 'high',
         text: `Your Password Has Been Changed`,
-        html: passwordChangedMail(user.username, {
+        html: passwordChangedMail(user.fName, {
             dateTime,
             os,
             ip

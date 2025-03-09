@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    .heading-1{
+        @apply leading-tight font-roboto-bold text-4xl;
+    }
+    .sub-heading{
+        @apply leading-tight font-roboto-medium text-black-200 text-lg;
+    }
+    .drawer-btn{
+        @apply flex-row items-center gap-2 p-4 my-2 mx-5 rounded-lg;
+    }
+    .link{
+        @apply text-primary underline underline-offset-4 font-roboto-medium;
+    }
+    .paragraph{
+        @apply leading-tight font-roboto-regular text-base text-black-200;
+    }
+}

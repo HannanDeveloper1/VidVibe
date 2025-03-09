@@ -3,6 +3,9 @@
 # dependencies
 node_modules/
 
+# Logs
+error.log
+
 # Expo
 .expo/
 dist/

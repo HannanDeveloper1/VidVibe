@@ -140,35 +140,36 @@ export const emailVerifiedMail = (username) => {
 
 export const forgetPasswordMail = (username, token) => {
     return `<!DOCTYPE html>
-            <html lang="en">
-            <head>
-              <meta charset="UTF-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>Reset Your Password</title>
-            </head>
-            <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
-            <div style="max-width: 600px; margin: 20px auto; background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-              <div style="text-align: center; margin-bottom: 20px; background: #ec3454; padding: 1rem; border-radius: 10px;">
-                <img src="https://ik.imagekit.io/onmwvwg7jy/VidVibe/images/VidVibe-splash-icon.PNG?updatedAt=1738481603417" alt="VidVibe Logo" style="max-width: 100px;">
-              </div>
-              <div style="text-align: left;">
-                <h1 style="color: #ec3454;">Reset Your Password</h1>
-                <p>Hello @${username},</p>
-                <p>We received a request to reset your password for your VidVibe account. Click the button below to reset your password:</p>
-                <a href="${process.env.CLIENT_ORIGIN}/forget/${token}" style="display: inline-block; padding: 10px 20px; color: #fff; background-color: #ec3454; border-radius: 5px; text-decoration: none; font-size: 16px; margin-top: 20px;">Reset Password</a>
-                <p><strong>Important:</strong> This link is only valid for 30 minutes</p>
-                <p>If you did not request a password reset, please ignore this email. Your password will remain unchanged.</p>
-                <p>If you have any questions or need assistance, feel free to reach out to us at ${process.env.SUPPORT_EMAIL}.</p>
-              </div>
-              <div style="text-align: center; margin-top: 20px; font-size: 12px; color: #999;">
-                <p>Best regards,<br>VidVibe Team</p>
-                <p>Follow us on social media:</p>
-                <p><a href="${process.env.FACEBOOK_PROFILE}" style="color: #ec3454;">[Facebook]</a> <a href="${process.env.INSTAGRAM_PROFILE}" style="color: #ec3454;">[Instagram]</a></p>
-              </div>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Reset Your Password</title>
+          </head>
+          <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
+          <div style="max-width: 600px; margin: 20px auto; background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+            <div style="text-align: center; margin-bottom: 20px; background: #ec3454; padding: 1rem; border-radius: 10px;">
+              <img src="https://ik.imagekit.io/onmwvwg7jy/VidVibe/images/VidVibe-splash-icon.PNG?updatedAt=1738481603417" alt="VidVibe Logo" style="max-width: 100px;">
             </div>
-            </body>
-            </html>`
-}
+            <div style="text-align: left;">
+              <h1 style="color: #ec3454;">Reset Your Password</h1>
+              <p>Hello @${username},</p>
+              <p>We received a request to reset your password for your VidVibe account. Click the button below to reset your password:</p>
+              <a href="${process.env.CLIENT_ORIGIN}/forget/${token}" style="display: inline-block; padding: 10px 20px; color: #fff; background-color: #ec3454; border-radius: 5px; text-decoration: none; font-size: 16px; margin-top: 20px;">Reset Password</a>
+              <p><strong>Important:</strong> This link is only valid for 30 minutes</p>
+              <p>If you did not request a password reset, please ignore this email. Your password will remain unchanged.</p>
+              <p>If you have any questions or need assistance, feel free to reach out to us at ${process.env.SUPPORT_EMAIL}.</p>
+            </div>
+            <div style="text-align: center; margin-top: 20px; font-size: 12px; color: #999;">
+              <p>Best regards,<br>VidVibe Team</p>
+              <p>Follow us on social media:</p>
+              <p><a href="${process.env.FACEBOOK_PROFILE}" style="color: #ec3454;">[Facebook]</a> <a href="${process.env.INSTAGRAM_PROFILE}" style="color: #ec3454;">[Instagram]</a></p>
+            </div>
+          </div>
+          </body>
+          </html>`;
+};
+
 
 export const passwordChangedMail = (username, details) => {
     return `<!DOCTYPE html>
