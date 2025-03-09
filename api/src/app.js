@@ -10,7 +10,7 @@ import profileRoutes from "./routes/profile.routes.js";
 
 const app = express()
 
-app.use(cors(['exp://192.168.100.2:8081'])) // Local client expo url
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(morgan('combined', {stream: {write: message => logger.info(message.trim())}}));

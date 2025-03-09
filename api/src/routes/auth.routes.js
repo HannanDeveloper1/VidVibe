@@ -21,8 +21,10 @@ router.get('/available/:username', [
 ], validator, usernameAvailable);
 
 router.post('/signup', [
-    body('fName').notEmpty().withMessage("Please enter the Name").isLength({ min: 3 }).withMessage("First Name must be at least 3 characters"),
-    body('lName').optional(),
+    body("profilePicture").isURL().withMessage("Profile picture must be provided in URL form").optional(),
+    body('name').notEmpty().withMessage("Please enter the Name").isLength({ min: 3 }).withMessage("Name must be at least 3 characters"),
+    body('username').notEmpty().withMessage("Please enter the Username"),
+    body('headline').optional(),
     body('email').isEmail().withMessage("Please enter a valid email").notEmpty().withMessage("Please enter the Email"),
     body('password').isStrongPassword({
         minLength: 8,

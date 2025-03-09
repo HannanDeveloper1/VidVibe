@@ -4,8 +4,9 @@ import "../styles/global.css";
 
 import {SplashScreen, Stack} from "expo-router";
 import {useFonts} from "expo-font";
+import {StatusBar} from "expo-status-bar";
 
-export default function rootLayout() {
+export default function Layout() {
 
   const [fontsLoaded, error] = useFonts({
     "Roboto-Black": require("../assets/fonts/Roboto-Black.ttf"),
@@ -34,8 +35,8 @@ export default function rootLayout() {
       <>
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name={'index'} />
-        <Stack.Screen name={'(auth)'} />
       </Stack>
+      <StatusBar style="dark" />
       </>
   );
 }

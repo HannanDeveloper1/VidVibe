@@ -5,9 +5,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: {
-          DEFAULT: "#ec3554",
-        },
+        primary: "#ec3554",
         white: {
           DEFAULT: "#fff",
           100: "#f5f5f5",
@@ -17,14 +15,9 @@ module.exports = {
           DEFAULT: "#000",
           100: "#111",
           200: "#222",
-          overlay: "rgba(17,17,17,0.08)",
         },
         accent: "#0095ff",
-        informative: {
-          DEFAULT :"#ff8800",
-          bg :"rgba(255,136,0,0.13)"
-        },
-        danger: "#ff2424",
+        danger: "#ff1818",
         success: "#1ac200",
       },
       fontFamily: {
