@@ -21,8 +21,8 @@ module.exports = {
         },
         accent: "#0095ff",
         informative: {
-          DEFAULT :"#ff8800",
-          bg :"rgba(255,136,0,0.13)"
+          DEFAULT: "#ff8800",
+          bg: "rgba(255,136,0,0.13)",
         },
         danger: "#ff2424",
         success: "#1ac200",
